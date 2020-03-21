@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "core.h": "c",
+        "stdio.h": "c",
+        "socket.h": "c",
+        "in.h": "c",
+        "device.h": "c",
+        "log.h": "c"
+    }
+}
