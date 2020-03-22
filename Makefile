@@ -2,11 +2,16 @@ CC=gcc
 SRC=src
 OUT=binaries
 
-${OUT}/sc-emulator: ${OUT}/main.o
-	${CC} ${OUT}/main.o -o ${OUT}/sc-emulator
+INC=-Isrc
+
+${OUT}/sc-emulator: ${OUT}/main.o ${OUT}/logger.o
+	${CC} ${OUT}/main.o ${OUT}/logger.o -o ${OUT}/sc-emulator
 
 ${OUT}/main.o: ${SRC}/main.c
-	${CC} -c ${SRC}/main.c -o ${OUT}/main.o
+	${CC} ${INC} -c ${SRC}/main.c -o ${OUT}/main.o
+
+${OUT}/logger.o: ${SRC}/core/logger.c
+	${CC} ${INC} -c ${SRC}/core/logger.c -o ${OUT}/logger.o
 
 clean:
-	rm ${OUT}/*.o
+	rm -f ${OUT}/*.o
