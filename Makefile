@@ -8,6 +8,7 @@ FLAGS := -Isrc
 OBJECTS := ${BIN}/main.o		\
 		   ${BIN}/logger.o 		\
 		   ${BIN}/protocol.o	\
+		   ${BIN}/t0.o	\
 		   ${BIN}/x86_io.o
 
 ${BIN}/sc-emulator: ${OBJECTS}
@@ -21,6 +22,9 @@ ${BIN}/logger.o: ${SRC}/core/logger.c
 
 ${BIN}/protocol.o: ${SRC}/protocol/protocol.c
 	${CC} ${FLAGS} -c ${SRC}/protocol/protocol.c -o ${BIN}/protocol.o
+
+${BIN}/t0.o: ${SRC}/protocol/t0.c
+	${CC} ${FLAGS} -c ${SRC}/protocol/t0.c -o ${BIN}/t0.o
 
 ${BIN}/x86_io.o: ${SRC}/hal/x86_io.c
 	${CC} ${FLAGS} -c ${SRC}/hal/x86_io.c -o ${BIN}/x86_io.o

@@ -1,7 +1,9 @@
 #ifndef PROTOCOL_H
 #define PROTOCOL_H
 
-/// \brief
+#include <core/types.h>
+
+/// \brief initializes the protocol.
 void protocol_startup(void);
 
 #endif // #ifdef PROTOCOL_H
