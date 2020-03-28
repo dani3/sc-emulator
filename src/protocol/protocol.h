@@ -1,3 +1,6 @@
+/** \file protocol.h
+ *\brief module that encapsulates the communication protocol.
+ */
 #ifndef PROTOCOL_H
 #define PROTOCOL_H
 

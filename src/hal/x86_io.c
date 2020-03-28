@@ -1,6 +1,5 @@
 /** \file x86_io.c
  * \brief I/O module of the emulator.
- *
  */
 #include <core/core.h>
 #include <core/logger.h>
@@ -28,8 +27,6 @@ static server_t server;
  * \return socket descriptor if success, negative number otherwise.
  */
 static u16 create_socket(void) {
-	log_debug("create socket...");
-
 	server.socket_desc = socket(AF_INET, SOCK_STREAM, 0);
 
 	return server.socket_desc;
@@ -47,7 +44,6 @@ static u32 bind_socket(void) {
 	remote.sin_addr.s_addr = htonl(INADDR_ANY);
 	remote.sin_port = htons(PORT);
 
-	log_debug("bind socket...");
 	return bind(server.socket_desc, (struct sockaddr *) &remote, sizeof(remote));
 }
 

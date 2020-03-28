@@ -1,3 +1,6 @@
+/** \file types.h
+ *\brief header file containing all the data types.
+ */
 #ifndef TYPES_H
 #define TYPES_H
 

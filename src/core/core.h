@@ -2,6 +2,7 @@
 #define CORE_H
 
 #include <device/platform.h>
+#include <core/types.h>
 #include <hal/hal.h>
 
 #endif // #ifdef CORE_H

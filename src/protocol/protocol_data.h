@@ -1,3 +1,6 @@
+/** \file protocol_data.h
+ *\brief module that declares protocol data to be shared across modules.
+ */
 #ifndef PROTOCOL_DATA_H
 #define PROTOCOL_DATA_H
 
