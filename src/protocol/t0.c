@@ -1,4 +1,4 @@
-/** \file t0.h
+/** \file t0.c
  * \brief module that implements the T0 protocol defined in the ISO-7816.
  */
 #include <core/core.h>

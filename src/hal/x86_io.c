@@ -107,7 +107,7 @@ u8 io_receive(u8* buf, u16 length) {
 	return 0;
 }
 
-/** \fn u8 io_receive(u8* data, u16 length)
+/** \fn u8 io_send(u8* data, u16 length)
  * \brief sends `length` bytes stored at `data`.
  *
  * \param data: data to be transmitted.

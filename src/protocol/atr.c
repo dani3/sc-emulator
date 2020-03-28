@@ -1,4 +1,4 @@
-/** \fn atr.c
+/** \file atr.c
  *\brief module that manages the ATR.
  */
 #include <core/core.h>

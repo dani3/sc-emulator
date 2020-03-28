@@ -1,4 +1,4 @@
-/** \file protocol.h
+/** \file protocol.c
  * \brief module that encapsulates the communication protocol.
  */
 #include <core/core.h>

@@ -1,4 +1,4 @@
-/** \fn atr.h
+/** \file atr.h
  *\brief module that manages the ATR.
  */
 #ifndef ATR_H
