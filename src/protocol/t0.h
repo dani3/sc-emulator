@@ -4,6 +4,7 @@
 #ifndef T0_H
 #define T0_H
 
+/// \brief sends the ATR as defined in ISO7816.
 void send_atr(void);
 
 #endif // #ifndef T0_H

@@ -6,7 +6,11 @@
 
 #include <protocol/protocol_data.h>
 
+#include <utilities/util.h>
+
 #include <string.h>
+#include <stdio.h>
+#include <errno.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
@@ -54,6 +58,7 @@ static u32 bind_socket(void) {
  */
 u8 io_init(void) {
 	struct sockaddr_in client;
+	socklen_t client_size = sizeof(client);
 	u8 message[5];
 
 	log_info("initializing i/o");
@@ -75,8 +80,8 @@ u8 io_init(void) {
 	// Wait for the reset
 	log_info("initialized");
 	log_info("waiting for reset");
-	if ((server.socket = accept(server.socket_desc, (struct sockaddr *) &client, (socklen_t *) sizeof(struct sockaddr_in)) < 0)) {
-		log_fatal("failed to accept request");
+	if (((server.socket = accept(server.socket_desc, (struct sockaddr *) &client, &client_size)) < 0)) {
+		log_fatal("failed to accept connection");
 		return -1;
 	}
 
@@ -116,10 +121,21 @@ u8 io_receive(u8* buf, u16 length) {
  * \return zero if success, negative number otherwise.
  */
 u8 io_send(u8* data, u16 length) {
+	print(data, length);
+
 	if (send(server.socket, data, length, 0) < 0) {
 		log_fatal("failed to send");
 		return -1;
 	}
 
 	return 0;
+}
+
+/** \fn io_shutdown
+ * \brief shutsdown the IO interface.
+ *
+ * \return Void.
+ */
+void io_shutdown(void) {
+	close(server.socket);
 }

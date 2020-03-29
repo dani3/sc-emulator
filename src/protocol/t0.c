@@ -12,5 +12,6 @@
  * \return Void.
  */
 void send_atr(void) {
-    log_info("sending ATR");
+    log_info("sending atr");
+    io_send(get_atr(), ATR_LENGTH);
 }
