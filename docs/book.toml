@@ -1,0 +1,6 @@
+[book]
+authors = ["DaniM"]
+language = "en"
+multilingual = false
+src = "src"
+title = "SC Emulator"
