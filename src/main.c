@@ -5,6 +5,9 @@
 #include <core/logger.h>
 #include <protocol/protocol.h>
 
+/** \fn main
+ * \brief entry point.
+ */
 int main() {
     log_info("starting sc-emulator");
     // Initialize the protocol.
