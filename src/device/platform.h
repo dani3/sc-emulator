@@ -7,4 +7,6 @@
 // Logger stuff
 #define LOG_USE_COLOR
 
+#define T0_PROTOCOL
+
 #endif // #ifdef PLATFORM_H

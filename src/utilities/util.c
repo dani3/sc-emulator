@@ -13,7 +13,7 @@
  * \return Void.
  */
 void print(u8* data, u16 length) {
-    for (u16 i = 0; i < length; ++i) {
+	for (u16 i = 0; i < length; ++i) {
 		if (i == 0) {
 			printf(" -");
 		}
@@ -21,5 +21,5 @@ void print(u8* data, u16 length) {
 		printf(" %02X", data[i]);
 	}
 
-    fflush(stdout);
+	fflush(stdout);
 }

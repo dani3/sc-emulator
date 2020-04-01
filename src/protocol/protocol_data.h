@@ -6,7 +6,12 @@
 
 #include <core/types.h>
 
-extern u8 io_buffer[260];
-extern u16 io_sw;
+#define IO_BUFFER_SIZE            260
+
+#define IO_BUFFER_APDU_OFFSET       0
+#define IO_BUFFER_DATA_OFFSET       5
+
+extern u8 io_buffer[IO_BUFFER_SIZE];
+extern u16 sw;
 
 #endif // #ifndef PROTOCOL_DATA_H
