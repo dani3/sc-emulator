@@ -11,4 +11,5 @@
  * \brief
  */
 void platform_create(void) {
+  /// \todo Create RAM and NVM areas.
 }
