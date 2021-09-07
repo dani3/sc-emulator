@@ -5,6 +5,7 @@
  */
 #include <core/core.h>
 
+#include <core/checkpoint.h>
 #include <protocol/tcpip_server.h>
 
 /**
@@ -22,6 +23,18 @@ int main() {
   server_init();
   // Wait for a connection.
   server_accept();
+
+  // `set_jmp` needs to be called from the main function as it doesn't get out of scope ever and,
+  // hence, deallocated. This prevents the possibility of creating some kind of abstraction layer.
+  reset_action_t reason = setjmp(g_reset_checkpoint);
+  if (reason == EXIT) {
+    log_info("shutting down sc-emulator...");
+
+    // Free resources.
+    platform_destroy();
+    // Shutdown the server.
+    server_close();
+  }
 
   return 0;
 }

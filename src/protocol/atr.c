@@ -1,27 +1,34 @@
-/** \file atr.c
- *\brief module that manages the ATR.
+/**
+ * \file atr.c
+ *
+ * \brief Implementation of the ATR module.
  */
-#include <core/core.h>
 #include <protocol/atr.h>
 
-const u8 COLD_OPERATIONAL_ATR[] = {
-    0x3B, 0x78, 0x96, 0x00, 0x00, 0x53, 0x43, 0x06, 0x60, 0x01, 0x07, 0x90, 0x00
-};
+#include <string.h>
 
-/** \fn get_atr
- * \brief returns the ATR.
+const u8 ATR[] = { 0x3B, 0x78, 0x96, 0x00, 0x00, 0x53, 0x43, 0x06, 0x60, 0x01, 0x07, 0x90, 0x00 };
+
+/**
+ * \brief Return an immutable pointer to the ATR.
  *
- * \return the ATR.
+ * \param length [OUT] length of the ATR.
+ *
+ * \return const pointer to the ATR.
  */
-u8* get_atr(void) {
-    return (u8 *)COLD_OPERATIONAL_ATR;
+const u8* get_atr(usize* length) {
+  *length = sizeof(ATR);
+  return ATR;
 }
 
-/** \fn get_atr_as_string
- * \brief returns a representation of the ATR.
- *
- * \return a representation of the ATR.
+/**
+ * \brief Print an ASCII representation of the ATR.
  */
-u8* get_atr_as_string(void) {
-    return "0x3B 0x78 0x96 0x00 0x00 0x53 0x43 0x06 0x60 0x01 0x07 0x90 0x00";
+void print_atr(void) {
+  char string[255] = { [0 ... 254] = 0 };
+  for (usize i = 0; i < sizeof(ATR); i++) {
+    snprintf(&string[strlen(string)], sizeof(ATR), "%02X ", ATR[i]);
+  }
+
+  log_info("sending ATR... %s", string);
 }

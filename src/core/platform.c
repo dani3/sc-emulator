@@ -2,8 +2,6 @@
  * \file platform.h
  *
  * \brief Implementation of the platform that can emulate a real device.
- *
- * Mainly it emulates the communications and the NVM.
  */
 #include <core/core.h>
 
@@ -12,4 +10,11 @@
  */
 void platform_create(void) {
   /// \todo Create RAM and NVM areas.
+}
+
+/**
+ * \brief
+ */
+void platform_destroy(void) {
+  /// \todo Free RAM and NVM areas.
 }

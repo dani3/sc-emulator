@@ -84,7 +84,7 @@ void server_accept(void) {
  * closed.
  */
 server_result_t server_recv(u8* buf, usize length) {
-  int result = recv(s_client_socket, buf, length, 0);
+  int result = recv(s_client_socket, buf, length, MSG_WAITALL);
   if (result > 0) {
     // If the reception is succesful, `recv` returns the number of bytes received.
     return OK;

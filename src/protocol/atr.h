@@ -1,16 +1,15 @@
-/** \file atr.h
- *\brief module that manages the ATR.
+/**
+ * \file atr.h
+ *
+ * \brief Header file that defines everything related to the ATR.
  */
 #ifndef ATR_H
 #define ATR_H
+#include <core/core.h>
 
-#include <core/types.h>
+// Return an immutable pointer to the ATR.
+const u8* get_atr(usize* length);
+// Print an ASCII representation of the ATR.
+void print_atr(void);
 
-#define ATR_LENGTH      13
-
-/// \brief returns the ATR.
-u8* get_atr(void);
-/// \brief returns a representation of the ATR.
-u8* get_atr_as_string(void);
-
-#endif // #ifndef ATR_H
+#endif
