@@ -36,6 +36,8 @@ int main() {
     platform_destroy();
     // Shutdown the server.
     server_close();
+
+    return 0;
   }
 
   // Initialize the device to emulate the real target as close as possible.
