@@ -7,7 +7,12 @@
 
 #include <core/checkpoint.h>
 #include <core/command_processor.h>
+#include <protocol/protocol.h>
 #include <protocol/tcpip_server.h>
+
+static void main_boot(void) {
+  protocol_init();
+}
 
 /**
  * \brief Entry point.
@@ -18,12 +23,8 @@ int main() {
   log_info(
       "starting sc-emulator (v%i.%i.%i)...", SC_VERSION_MAJOR, SC_VERSION_MINOR, SC_VERSION_PATCH);
 
-  // Initialize the device to emulate the real target as close as possible.
-  platform_create();
   // Initialize the TCP/IP server.
   server_init();
-  // Wait for a connection.
-  server_accept();
 
   // `set_jmp` needs to be called from the main function as it doesn't get out of scope ever and,
   // hence, deallocated. This prevents the possibility of creating some kind of abstraction layer.
@@ -36,6 +37,14 @@ int main() {
     // Shutdown the server.
     server_close();
   }
+
+  // Initialize the device to emulate the real target as close as possible.
+  platform_create();
+  // Wait for a connection.
+  server_accept();
+
+  // Initialize the OS.
+  main_boot();
 
   process_commands();
 

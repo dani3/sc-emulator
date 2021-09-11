@@ -1,4 +1,4 @@
-"""TCP/IP client implementation for testing the sc-emulator."""
+"""TCP/IP client."""
 
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ class TcpIpClientException(Exception):
 
 
 class TcpIpClient:
-    """TCP/IP client implementation."""
+    """TCP/IP client."""
 
     host: str
     port: int
@@ -42,7 +42,7 @@ class TcpIpClient:
     def connect(self) -> None:
         """Establish a connection to server."""
 
-        print("connecting...")
+        print("[TCP/IP client] connecting...")
 
         if self.connection is not None:
             raise TcpIpClientException("Connection already established.")
@@ -52,19 +52,19 @@ class TcpIpClient:
         s.connect((self.host, self.port))
 
         self.connection = s
-        print("connected.")
+        print("[TCP/IP client] connected.")
 
     def disconnect(self) -> None:
         """Disconnect."""
 
-        print("disconnecting...")
+        print("[TCP/IP client] disconnecting...")
 
         if self.connection is None:
             return
 
         self.connection.shutdown(socket.SHUT_RDWR)
         self.connection.close()
-        print("disconnected.")
+        print("[TCP/IP client] disconnected.")
 
     def send_all(self, msg: bytes) -> None:
         """Send given bytes on the socket."""
@@ -102,21 +102,3 @@ class TcpIpClient:
         traceback: Optional[TracebackType],
     ) -> None:
         self.disconnect()
-
-
-COLD_RESET: int = 0x00
-TRANSMIT: int = 0x01
-EXIT: int = 0x02
-
-
-def main() -> None:
-    """Entry point."""
-    with TcpIpClient() as client:
-        client.connect()
-        client.send_all((TRANSMIT).to_bytes(1, byteorder="big"))
-        client.send_all((5).to_bytes(2, byteorder="big"))
-        client.send_all(bytes([0x01, 0x02, 0x03, 0x04, 0x05]))
-
-
-if __name__ == "__main__":
-    main()
