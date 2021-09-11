@@ -4,11 +4,7 @@
  * \brief Implementation of the platform that can emulate a real device.
  */
 #include <core/core.h>
-
 #include <sys/mman.h>
-
-#define RAM_SIZE 0x10000 ///< Size of the RAM area.
-#define NVM_SIZE 0x52000 ///< Size of the NVM area.
 
 // Pointer to the start of the RAM area.
 static u8* s_ram_start;
@@ -28,4 +24,40 @@ void platform_create(void) {
  */
 void platform_destroy(void) {
   /// \todo Free RAM and NVM areas.
+}
+
+/**
+ * \brief Return an immutable pointer to the start of the RAM.
+ *
+ * \return Constant pointer to the start of the RAM.
+ */
+const u8* get_ram_start(void) {
+  return (const u8*) s_ram_start;
+}
+
+/**
+ * \brief Return a mutable pointer to the start of the RAM.
+ *
+ * \return Mutable pointer to the start of the RAM.
+ */
+u8* get_ram_start_as_mut(void) {
+  return s_ram_start;
+}
+
+/**
+ * \brief Return an immutable pointer to the start of the NVM.
+ *
+ * \return Constant pointer to the start of the NVM.
+ */
+const u8* get_nvm_start(void) {
+  return (const u8*) s_nvm_start;
+}
+
+/**
+ * \brief Return a mutable pointer to the start of the NVM.
+ *
+ * \return Mutable pointer to the start of the NVM.
+ */
+u8* get_nvm_start_as_mut(void) {
+  return s_nvm_start;
 }
