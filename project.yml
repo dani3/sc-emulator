@@ -37,13 +37,23 @@
   # in order to add common defines:
   #  1) remove the trailing [] from the :common: section
   #  2) add entries to the :common: section (e.g. :test: has TEST defined)
-  :common: &common_defines [ LOG_USE_COLOR ]
+  :common: &common_defines
+  :release:
+    - LOG_USE_COLOR
   :test:
     - *common_defines
     - TEST
   :test_preprocess:
     - *common_defines
     - TEST
+
+:flags:
+  :release:
+    :compile:
+      :main:       # add '-Wall' to compilation of main.c
+        - -Wall
+      :'test_.+':   # add '-pedantic' to all test-files
+        - -pedantic
 
 :cmock:
   :mock_prefix: mock_

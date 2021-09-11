@@ -5,14 +5,8 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "build sc-emulator",
-            "command": "/usr/bin/gcc",
-            "args": [
-                "-g",
-                "-o",
-                "sc-emulator",
-                "./src/main.c"
-            ],
+            "label": "Build",
+            "command": "ceedling clobber release",
             "group": {
                 "kind": "build",
                 "isDefault": true
