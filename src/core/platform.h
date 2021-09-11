@@ -17,4 +17,11 @@ void platform_create(void);
 // Free resources and cleanup.
 void platform_destroy(void);
 
+// Align a variable to the given size boundary.
+#define ALIGN(x) __attribute__((aligned(x)))
+// Place the variable in a given section.
+#define AT(s) __attribute__((section(s)))
+// Suggest the compiler to inline the function.
+#define FORCE_INLINE __attribute__((always_inline)) inline
+
 #endif

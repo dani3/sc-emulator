@@ -155,7 +155,7 @@ void protocol_send(const apdu_t* apdu) {
  *
  * \return mutable pointer to an apdu_t struct.
  */
-apdu_t* protocol_get_apdu_as_mut_ptr(void) {
+FORCE_INLINE apdu_t* protocol_get_apdu_as_mut_ptr(void) {
   return &s_apdu;
 }
 
@@ -165,7 +165,7 @@ apdu_t* protocol_get_apdu_as_mut_ptr(void) {
  * \param sw status word to be set.
  * \param apdu pointer to an apdu_t struct.
  */
-void protocol_set_sw(u16 sw, apdu_t* apdu) {
+FORCE_INLINE void protocol_set_sw(u16 sw, apdu_t* apdu) {
   apdu->sw1 = (u8) (sw >> 8);
   apdu->sw2 = (u8) (sw & 0xFF);
 }
