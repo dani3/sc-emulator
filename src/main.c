@@ -6,6 +6,7 @@
 #include <core/core.h>
 
 #include <core/checkpoint.h>
+#include <core/command_processor.h>
 #include <protocol/tcpip_server.h>
 
 /**
@@ -35,6 +36,8 @@ int main() {
     // Shutdown the server.
     server_close();
   }
+
+  process_commands();
 
   return 0;
 }

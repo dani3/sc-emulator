@@ -28,7 +28,7 @@ typedef struct {
   u8 sw2;       ///< Second byte of the status word.
 } apdu_t;
 
-// Initialize the IO interface.
+// Initialize the protocol and send the ATR.
 void protocol_init(void);
 // Receive a command APDU.
 apdu_t* protocol_receive(void);

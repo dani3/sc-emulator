@@ -95,7 +95,7 @@ apdu_t* protocol_receive(void) {
   }
 
   log_info(
-      "apdu receied: %02X %02X %02X %02X %02X", s_apdu.cla, s_apdu.ins, s_apdu.p1, s_apdu.p2,
+      "apdu received: %02X %02X %02X %02X %02X", s_apdu.cla, s_apdu.ins, s_apdu.p1, s_apdu.p2,
       s_apdu.p3);
 
   // If it's a 4-byte case 1 command.
