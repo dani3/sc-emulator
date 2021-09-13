@@ -10,6 +10,9 @@
 #include <protocol/protocol.h>
 #include <protocol/tcpip_server.h>
 
+/**
+ * \brief Main initialization.
+ */
 static void main_boot(void) {
   protocol_init();
 }
