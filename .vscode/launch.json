@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/sc-emulator",
+            "program": "${workspaceFolder}/build/release/sc-emulator",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
