@@ -1,5 +1,5 @@
 /**
- * \file platform.h
+ * \file platform.c
  *
  * \brief Implementation of the platform that can emulate a real device.
  */

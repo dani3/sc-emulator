@@ -1,5 +1,5 @@
 /**
- * \file checkpoint.c
+ * \file checkpoint.h
  *
  * \brief Set of 'checkpoints' that can be left in the code.
  */

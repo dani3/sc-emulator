@@ -10,7 +10,7 @@
  * enabled. Therefore, Nagle's algorithm is disable to prevent a bad interaction with TCP delayed
  * ACK.
  *
- * \ref https://en.wikipedia.org/wiki/Nagle%27s_algorithm#Interaction_with_delayed_ACK
+ * See https://en.wikipedia.org/wiki/Nagle%27s_algorithm#Interaction_with_delayed_ACK
  */
 #include <protocol/tcpip_server.h>
 

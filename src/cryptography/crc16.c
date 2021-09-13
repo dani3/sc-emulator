@@ -3,7 +3,7 @@
  *
  * \brief Implementation of the CRC16-CCITT.
  *
- * \see https://os.mbed.com/users/hudakz/code/CRC16_CCITT/file/6ecc3a64bf7b/CRC16_CCITT.cpp/
+ * See https://os.mbed.com/users/hudakz/code/CRC16_CCITT/file/6ecc3a64bf7b/CRC16_CCITT.cpp/
  */
 #include <cryptography/crc16.h>
 

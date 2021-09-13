@@ -29,11 +29,9 @@ const u8* get_nvm_start(void);
 // Return a mutable pointer to the start of the NVM.
 u8* get_nvm_start_as_mut(void);
 
-// Align a variable to the given size boundary.
-#define ALIGN(x) __attribute__((aligned(x)))
-// Place the variable in a given section.
-#define AT(s) __attribute__((section(s)))
-// Suggest the compiler to inline the function.
-#define FORCE_INLINE __attribute__((always_inline)) inline
+#define ALIGN(x) __attribute__((aligned(x))) ///< Align a variable to the given size boundary.
+#define AT(s)    __attribute__((section(s))) ///< Place the variable in a given section.
+#define FORCE_INLINE                                                                               \
+  __attribute__((always_inline)) inline ///< Suggest the compiler to inline the function.
 
 #endif
