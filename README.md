@@ -1,5 +1,8 @@
 # SmartCard Emulator
 
+[![build](https://github.com/dani3/sc-emulator/actions/workflows/build.yml/badge.svg)](https://github.com/dani3/sc-emulator/actions/workflows/build.yml)
+[![test](https://github.com/dani3/sc-emulator/actions/workflows/unit-test.yml/badge.svg)](https://github.com/dani3/sc-emulator/actions/workflows/unit-test.yml)
+
 Small SmartCard emulator written in C. This project stemmed from the fact of wanting to practice different kinds of technologies, such as Ceedling, Python and minor C related things.
 
 ## How to use
@@ -24,7 +27,7 @@ $ ./build/release/sc-emulator
 ## Roadmap
 
 - [ ] Implement cryptographic algorithms.
-  - [ ] CRC16.
+  - [x] CRC16.
   - [ ] DES.
   - [ ] SHA256.
   - [ ] TRNG.
