@@ -1,5 +1,5 @@
 [book]
-authors = ["DaniM"]
+authors = ["Daniel Mancebo <daniel.m.aldea@hotmail.com"]
 language = "en"
 multilingual = false
 src = "src"

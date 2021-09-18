@@ -1,3 +1,5 @@
+"""Module that contains the implementation of a Command and Response APDU as specified in the ISO7816."""
+
 from typing import Optional, List
 
 

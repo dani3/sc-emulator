@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from iso_7816 import Command, Response
-from client import TcpIpClient, TcpIpClientException
+from tcpip_client import TcpIpClient
 
 from typing import Optional, Type
 from types import TracebackType
