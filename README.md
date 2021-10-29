@@ -23,12 +23,3 @@ $ ./build/release/sc-emulator
 
 - [Ceedling](https://www.throwtheswitch.org/ceedling)
 - [Python 3.9](https://www.python.org/)
-
-## Roadmap
-
-- [ ] Implement cryptographic algorithms.
-  - [x] CRC16.
-  - [ ] DES.
-  - [ ] SHA256.
-  - [ ] TRNG.
-- [ ] Implement MMU.
