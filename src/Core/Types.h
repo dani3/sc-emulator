@@ -1,10 +1,9 @@
 /**
- * \file types.h
+ * \file Types.h
  *
  * \brief This file contains platform-agnostic types definitions for an X86_64 architecture.
  */
-#ifndef TYPES_H
-#define TYPES_H
+#pragma once
 
 /// \brief 1-byte unsigned primitive type.
 typedef unsigned char u8;
@@ -28,21 +27,3 @@ typedef signed long long i64;
 typedef unsigned long long usize;
 /// \brief Pointer-sized signed integer type.
 typedef signed long long isize;
-
-#ifndef NULL
-#  define NULL 0
-#endif
-
-#ifndef nullptr
-#  define nullptr 0
-#endif
-
-#ifndef true
-#  define true 1
-#endif
-
-#ifndef false
-#  define false 1
-#endif
-
-#endif // #ifndef TYPES_H

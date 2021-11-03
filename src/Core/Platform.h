@@ -6,11 +6,10 @@
  * It initializes the system so that it mimics as much as possible the final target, e.g. creates
  * the memory regions that represent the EEPROM and RAM.
  */
-#ifndef PLATFORM_H
-#define PLATFORM_H
+#pragma once
 
 // Types definition.
-#include <core/types.h>
+#include <Core/Types.h>
 
 #define RAM_SIZE 0x10000 ///< Size of the RAM area.
 #define NVM_SIZE 0x52000 ///< Size of the NVM area.
@@ -33,5 +32,3 @@ u8* get_nvm_start_as_mut(void);
 #define AT(s)    __attribute__((section(s))) ///< Place the variable in a given section.
 #define FORCE_INLINE                                                                               \
   __attribute__((always_inline)) inline ///< Suggest the compiler to inline the function.
-
-#endif

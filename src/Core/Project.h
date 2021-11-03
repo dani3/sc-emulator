@@ -1,10 +1,9 @@
 /**
- * \file project.h
+ * \file Project.h
  *
  * \brief Header file that contains the definition of the project.
  */
-#ifndef PROJECT_H
-#define PROJECT_H
+#pragma once
 
 // * ==============================================================================================
 // * Emulator version (following semantic versioning)
@@ -16,5 +15,3 @@
 #define SC_VERSION_MINOR 0
 /// \brief Patch digit of the version of the emulator.
 #define SC_VERSION_PATCH 0
-
-#endif

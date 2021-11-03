@@ -5,23 +5,21 @@
 		}
 	],
 	"settings": {
+		"cmake.generator": "Unix Makefiles",
 		"C_Cpp.formatting": "clangFormat",
-		"C_Cpp.default.defines": [
-			"TEST",
-			"LOG_USE_COLOR",
-		],
+		"C_Cpp.default.defines": [],
 		"C_Cpp.clang_format_style": "file",
 		"C_Cpp.default.browse.limitSymbolsToIncludedHeaders": true,
-		"C_Cpp.default.compilerPath": "gcc",
-		"C_Cpp.default.intelliSenseMode": "gcc-x64",
+		"C_Cpp.default.compilerPath": "g++",
 		"C_Cpp.errorSquiggles": "Enabled",
-		"C_Cpp.default.cStandard": "c11",
+		"C_Cpp.default.cppStandard": "c++17",
 		"C_Cpp.default.includePath": [
 			"./src/",
+			"./vendor/spdlog/include",
 		],
 		"files.associations": {
-			"*.h": "c",
-			"*.c": "c",
+			"*.h": "cpp",
+			"*.cpp": "cpp",
 		},
 		"python.linting.pylintEnabled": false,
 		"python.linting.pydocstyleEnabled": true,
