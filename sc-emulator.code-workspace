@@ -6,6 +6,7 @@
 	],
 	"settings": {
 		"cmake.generator": "Unix Makefiles",
+		"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
 		"C_Cpp.formatting": "clangFormat",
 		"C_Cpp.default.defines": [],
 		"C_Cpp.clang_format_style": "file",
@@ -42,7 +43,7 @@
 			"editor.tabSize": 4
 		},
 		// Editor configuration
-		"editor.tabSize": 2,
+		"editor.tabSize": 4,
 		"editor.insertSpaces": true,
 		"editor.trimAutoWhitespace": true,
 		"editor.formatOnSave": true,
