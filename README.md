@@ -1,23 +1,25 @@
 # SmartCard Emulator
 
-Small SmartCard emulator written in C++17. This project stemmed from the fact of wanting to practice different kinds of technologies, such as C++, Python CMake and Catch2.
+Small SmartCard emulator written in C++17. This project was born from the fact of wanting to practice different kinds of tools and tests frameworks for C++ and Python.
 
 ## How to use
 
-First, install all the dependencies shown below. Once installed, compile the emulator:
+First, __install__ all the [dependencies](#dependencies) shown below. Once installed, __compile__ the emulator:
 
 ```sh
-TODO
+$ cmake .. -DCMAKE_BUILD_TYPE=$1 -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -G "Unix Makefiles"
+$ make
 ```
 
-You can now run the emulator:
+You can now __run__ the emulator:
 
 ```sh
-TODO
+cd build/
+./sc-emulator
 ```
 
 ### Dependencies
 
 - [CMake](https://www.cmake.org)
 - [Catch2](https://github.com/catchorg/Catch2)
-- [Python 3.9](https://www.python.org/)
+- [Python 3.9+](https://www.python.org/)
