@@ -4,11 +4,12 @@ exclude: "^          \
   (vendor/.*)        \
   (.vscode/.*)       \
   (.mypy_cache/.*)   \
+  (.__pycache__/.*)  \
   (build/.*)         \
   (docs/.*)          \
   "
 
-include: "src"
+include: "src/ baldwin/src/"
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
