@@ -1,25 +1,23 @@
 # SmartCard Emulator
 
-[![build](https://github.com/dani3/sc-emulator/actions/workflows/build.yml/badge.svg)](https://github.com/dani3/sc-emulator/actions/workflows/build.yml)
-[![test](https://github.com/dani3/sc-emulator/actions/workflows/unit-test.yml/badge.svg)](https://github.com/dani3/sc-emulator/actions/workflows/unit-test.yml)
-
-Small SmartCard emulator written in C. This project stemmed from the fact of wanting to practice different kinds of technologies, such as Ceedling, Python and minor C related things.
+Small SmartCard emulator written in C++17. This project stemmed from the fact of wanting to practice different kinds of technologies, such as C++, Python CMake and Catch2.
 
 ## How to use
 
 First, install all the dependencies shown below. Once installed, compile the emulator:
 
 ```sh
-$ ceedling clobber release
+TODO
 ```
 
 You can now run the emulator:
 
 ```sh
-$ ./build/release/sc-emulator
+TODO
 ```
 
 ### Dependencies
 
-- [Ceedling](https://www.throwtheswitch.org/ceedling)
+- [CMake](https://www.cmake.org)
+- [Catch2](https://github.com/catchorg/Catch2)
 - [Python 3.9](https://www.python.org/)

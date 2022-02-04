@@ -5,8 +5,17 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "Build",
-            "command": "ceedling clobber release",
+            "label": "Build (Debug)",
+            "command": "./scripts/build.sh Debug",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Build (Release)",
+            "command": "./scripts/build.sh Release",
             "group": {
                 "kind": "build",
                 "isDefault": true
