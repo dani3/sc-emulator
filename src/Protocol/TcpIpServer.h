@@ -3,12 +3,12 @@
 #include "Core/Core.h"
 
 /**
- * \brief \todo
+ * \brief Enum that represents the types of errors that can happen upon reception.
  */
 enum class ReceiveResult {
-    Ok,               ///< \todo
-    FatalError,       ///< \todo
-    ConnectionClosed, ///< \todo
+    Ok,               ///< Some data has been received.
+    FatalError,       ///< Unrecoverable error.
+    ConnectionClosed, ///< The connection has been closed.
 };
 
 /**
@@ -39,10 +39,10 @@ public:
 private:
     TcpIpServer();
 
-    static TcpIpServer *s_server;
+    static TcpIpServer *s_Server;
 
     // Socket used ot listen for new connections.
-    int s_listen_socket;
+    int s_ListenSocket;
     // Client socket used for communicating with an accepted connection.
-    int s_client_socket;
+    int s_ClientSocket;
 };

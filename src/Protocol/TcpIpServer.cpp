@@ -20,19 +20,19 @@
 
 #define DEFAULT_PORT 8080
 
-TcpIpServer *TcpIpServer::s_server = nullptr;
+TcpIpServer *TcpIpServer::s_Server;
 
 TcpIpServer::TcpIpServer() {
-    s_listen_socket = 0;
-    s_client_socket = 0;
+    s_ListenSocket = 0;
+    s_ClientSocket = 0;
 }
 
 TcpIpServer *TcpIpServer::GetInstance() {
-    if (s_server == nullptr) {
-        s_server = new TcpIpServer();
+    if (s_Server == nullptr) {
+        s_Server = new TcpIpServer();
     }
 
-    return s_server;
+    return s_Server;
 }
 
 /**
@@ -44,17 +44,17 @@ void TcpIpServer::Init() {
     SC_INFO("initializing TCP/IP server at port {0}...", DEFAULT_PORT);
 
     // Create the socket.
-    s_listen_socket = socket(AF_INET, SOCK_STREAM, 0);
-    SC_ASSERT(s_listen_socket >= 0, "failed to create socket...");
+    s_ListenSocket = socket(AF_INET, SOCK_STREAM, 0);
+    SC_ASSERT(s_ListenSocket >= 0, "failed to create socket...");
 
     usize on = 1;
     SC_ASSERT(
-        setsockopt(s_listen_socket, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on)) == 0,
+        setsockopt(s_ListenSocket, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on)) == 0,
         "error while setting socket option...");
 
     // Disable Nagle's algorithm (see file header).
     SC_ASSERT(
-        setsockopt(s_listen_socket, IPPROTO_TCP, TCP_NODELAY, &on, sizeof(on)) == 0,
+        setsockopt(s_ListenSocket, IPPROTO_TCP, TCP_NODELAY, &on, sizeof(on)) == 0,
         "error while setting socket option...");
 
     remote.sin_family = AF_INET;
@@ -63,10 +63,10 @@ void TcpIpServer::Init() {
 
     // Set up the TCP listening socket.
     SC_ASSERT(
-        bind(s_listen_socket, (struct sockaddr *) &remote, sizeof(remote)) >= 0,
+        bind(s_ListenSocket, (struct sockaddr *) &remote, sizeof(remote)) >= 0,
         "failed to bind socket...");
 
-    SC_ASSERT(listen(s_listen_socket, 1) >= 0, "unable to set socket backlog...");
+    SC_ASSERT(listen(s_ListenSocket, 1) >= 0, "unable to set socket backlog...");
 }
 
 /**
@@ -79,8 +79,8 @@ void TcpIpServer::Accept() {
     socklen_t client_size = sizeof(client);
 
     SC_INFO("listening for connections...");
-    s_client_socket = accept(s_listen_socket, (struct sockaddr *) &client, &client_size);
-    SC_ASSERT(s_client_socket >= 0, "failed to accept connection...")
+    s_ClientSocket = accept(s_ListenSocket, (struct sockaddr *) &client, &client_size);
+    SC_ASSERT(s_ClientSocket >= 0, "failed to accept connection...")
     SC_INFO("new connection accepted...");
 }
 
@@ -94,7 +94,7 @@ void TcpIpServer::Accept() {
  * and ReceiveResult::ConnectionClosed if the connection has been closed.
  */
 ReceiveResult TcpIpServer::Receive(u8 *buf, usize length) {
-    int result = recv(s_client_socket, buf, length, MSG_WAITALL);
+    int result = recv(s_ClientSocket, buf, length, MSG_WAITALL);
     if (result > 0) {
         // If the reception is succesful, `recv` returns the number of bytes received.
         return ReceiveResult::Ok;
@@ -116,12 +116,12 @@ ReceiveResult TcpIpServer::Receive(u8 *buf, usize length) {
  * \param length: length of the data.
  */
 void TcpIpServer::Send(const u8 *data, usize length) {
-    SC_ASSERT(send(s_client_socket, data, length, 0) >= 0, "failed to transmit...");
+    SC_ASSERT(send(s_ClientSocket, data, length, 0) >= 0, "failed to transmit...");
 }
 
 /**
  * \brief Close the TCP/IP server.
  */
 void TcpIpServer::Close() {
-    SC_ASSERT(close(s_client_socket) >= 0, "failed to close server...");
+    SC_ASSERT(close(s_ClientSocket) >= 0, "failed to close server...");
 }

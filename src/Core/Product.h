@@ -26,6 +26,9 @@ public:
     // It cannot be assignable.
     void operator=(const Product &other) = delete;
 
+    /**
+     * \brief Entry point to run the current product.
+     */
     void Run();
 
     /**

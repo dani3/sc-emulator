@@ -11,3 +11,6 @@ make
 
 echo
 echo "-- ✨ done!"
+echo
+echo "-- 📦 Binary output: ./build/sc-emulator"
+echo

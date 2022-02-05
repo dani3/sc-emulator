@@ -79,6 +79,7 @@ Protocol::Protocol() {
 
 Protocol::~Protocol() {
     m_Server->Close();
+    delete m_Server;
 }
 
 /**
@@ -123,10 +124,10 @@ Result<Message> Protocol::Receive() {
 
     switch (packet.control) {
     case CONTROL_COLD_RESET:
-        return Result<Message>(Message(Message::Type::COLD_RESET));
+        return Message(Message::Type::COLD_RESET);
 
     case CONTROL_EXIT:
-        return Result<Message>(Message(Message::Type::EXIT));
+        return Message(Message::Type::EXIT);
     }
 
     // Receive the length.
