@@ -41,7 +41,10 @@ public:
     }
 
 private:
-    static Product *s_Instance;
+    /**
+     * \brief Reset the card.
+     */
+    void Reset();
 
 private:
     std::unique_ptr<Platform> m_Platform;

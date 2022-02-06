@@ -2,6 +2,8 @@
 
 #include "Core/Core.h"
 
+#include <vector>
+
 /**
  * \brief Class that defines the platform.
  *
@@ -11,9 +13,9 @@
 class Platform {
 public:
     // Size of the RAM area.
-    static const int RAM_SIZE = 0x10000;
+    static const usize RAM_SIZE = 0x10000;
     // Size of the NVM area.
-    static const int NVM_SIZE = 0x52000;
+    static const usize NVM_SIZE = 0x52000;
 
     // Initialize the system so that it mimics the real device as closely as possible.
     Platform();
@@ -30,8 +32,8 @@ public:
      *
      * \return Constant pointer to the start of the RAM.
      */
-    inline const u8 *GetRamStart() const {
-        return (const u8 *) m_RamStart;
+    inline const std::vector<u8> &GetRamStart() const {
+        return m_RamStart;
     }
 
     /**
@@ -39,7 +41,7 @@ public:
      *
      * \return Mutable pointer to the start of the RAM.
      */
-    inline u8 *GetRamStartAsMut() {
+    inline std::vector<u8> &GetRamStartAsMut() {
         return m_RamStart;
     }
 
@@ -48,8 +50,8 @@ public:
      *
      * \return Constant pointer to the start of the NVM.
      */
-    inline const u8 *GetNvmStart() const {
-        return (const u8 *) m_NvmStart;
+    inline const std::vector<u8> &GetNvmStart() const {
+        return m_NvmStart;
     }
 
     /**
@@ -57,13 +59,13 @@ public:
      *
      * \return Mutable pointer to the start of the NVM.
      */
-    inline u8 *GetNvmStartAsMut() {
+    inline std::vector<u8> &GetNvmStartAsMut() {
         return m_NvmStart;
     }
 
 private:
-    // Pointer to the start of the RAM area.
-    u8 *m_RamStart;
-    // Pointer to the start of the NVM area.
-    u8 *m_NvmStart;
+    // Vector that represents the RAM area.
+    std::vector<u8> m_RamStart;
+    // Vector that represents the NVM area.
+    std::vector<u8> m_NvmStart;
 };

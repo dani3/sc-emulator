@@ -93,6 +93,8 @@ public:
     Result<Message> Receive();
     // Send the data and/or the SW.
     void Send(const Message &message);
+    // Send the Atr.
+    void SendAtr() const;
 
 private:
     /**

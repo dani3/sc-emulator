@@ -38,10 +38,10 @@ usize Atr::Size() const {
  * \brief Print an ASCII representation of the ATR.
  */
 void Atr::Print(void) const {
-    char string[255] = { 0 };
+    char atr[255] = { 0 };
     for (usize i = 0; i < sizeof(ATR); i++) {
-        snprintf(&string[strlen(string)], sizeof(ATR), "%02X ", ATR[i]);
+        snprintf(&atr[strlen(atr)], sizeof(ATR), "%02X ", ATR[i]);
     }
 
-    SC_INFO("ATR: %s", string);
+    SC_INFO("ATR: {0}", atr);
 }

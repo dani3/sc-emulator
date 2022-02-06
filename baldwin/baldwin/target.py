@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from tcpip_client import TcpIpClient
+from baldwin.tcpip_client import TcpIpClient
 
 from typing import Optional, Type
 from types import TracebackType
@@ -45,4 +45,5 @@ class Target:
         exc_value: Optional[BaseException],
         traceback: Optional[TracebackType],
     ) -> None:
+        self.client.send_all((self.EXIT).to_bytes(1, byteorder="little"))
         self.client.disconnect()

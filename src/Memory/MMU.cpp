@@ -13,7 +13,7 @@ MMU::~MMU() {
  * \param value
  * \param length
  */
-void MMU::Fill(u8 *base, u8 value, isize length) {
+void MMU::Fill(u8 *base, u8 value, usize length) {
     //    usize head = (usize) base & 0x03;
     //
     //    switch (head) {
@@ -48,7 +48,7 @@ void MMU::Fill(u8 *base, u8 value, isize length) {
     //    }
 
     // TODO Write word wise when possible.
-    for (int i = 0; i < length; ++i) {
+    for (usize i = 0; i < length; ++i) {
         base[i] = value;
         base++;
     }

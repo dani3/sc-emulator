@@ -91,16 +91,7 @@ void Protocol::Init() {
     m_Server->Init();
     m_Server->Accept();
 
-    const u8 *atr = m_Atr->AsPtr();
-    m_Atr->Print();
-
-    // Set the packet to be sent.
-    Packet packet;
-    memcpy(packet.data, atr, m_Atr->Size());
-    packet.length = m_Atr->Size();
-
-    m_Server->Send((const u8 *) &packet.length, sizeof(packet.length));
-    m_Server->Send(packet.data, packet.length);
+    SendAtr();
 }
 
 /**
@@ -194,6 +185,24 @@ void Protocol::Send(const Message &message) {
         packet.data[0] = r_apdu.sw1;
         packet.data[1] = r_apdu.sw2;
     }
+
+    m_Server->Send((const u8 *) &packet.length, sizeof(packet.length));
+    m_Server->Send(packet.data, packet.length);
+}
+
+/**
+ * \brief Send the Atr.
+ */
+void Protocol::SendAtr() const {
+    SC_ASSERT(m_Server != nullptr, "TcpIp server cannot be null");
+
+    m_Atr->Print();
+
+    // Set the packet to be sent.
+    Packet packet;
+    const u8 *atr = m_Atr->AsPtr();
+    memcpy(packet.data, atr, m_Atr->Size());
+    packet.length = m_Atr->Size();
 
     m_Server->Send((const u8 *) &packet.length, sizeof(packet.length));
     m_Server->Send(packet.data, packet.length);
