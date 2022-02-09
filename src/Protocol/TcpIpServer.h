@@ -42,7 +42,7 @@ private:
     static TcpIpServer *s_Server;
 
     // Socket used ot listen for new connections.
-    int s_ListenSocket;
+    int m_ListenSocket;
     // Client socket used for communicating with an accepted connection.
-    int s_ClientSocket;
+    int m_ClientSocket;
 };

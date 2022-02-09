@@ -34,17 +34,17 @@ public:
      * \param status  Status enum.
      * \param err_msg Error message.
      */
-    explicit Result(Status status, std::string err_msg = std::string())
+    explicit Result(Status status, std::string &&err_msg = std::string())
         : m_Status(status)
         , m_Thing()
-        , m_ErrorMessage(err_msg) {
+        , m_ErrorMessage(std::move(err_msg)) {
     }
 
     /**
      * \brief Explicit error with message.
      */
-    static Result Error(std::string err_msg) {
-        return Result(Err, err_msg);
+    static Result Error(std::string &&err_msg) {
+        return Result(Err, std::move(err_msg));
     }
 
     /**

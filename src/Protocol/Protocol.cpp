@@ -90,8 +90,6 @@ void Protocol::Init() {
 
     m_Server->Init();
     m_Server->Accept();
-
-    SendAtr();
 }
 
 /**
@@ -103,7 +101,7 @@ void Protocol::Init() {
  * \return Message object.
  */
 Result<Message> Protocol::Receive() {
-    SC_INFO("waiting for a new command...");
+    SC_INFO("waiting for a new message...");
 
     u8 bytes[5 + 256] = { 0 };
     Packet packet;
@@ -191,7 +189,7 @@ void Protocol::Send(const Message &message) {
 }
 
 /**
- * \brief Send the Atr.
+ * \brief Send the Atr to the host.
  */
 void Protocol::SendAtr() const {
     SC_ASSERT(m_Server != nullptr, "TcpIp server cannot be null");

@@ -62,7 +62,9 @@ public:
 
     Message(const Message &other)
         : m_Type(other.GetType()) {
-        m_Apdu = std::make_unique<Apdu>(other.GetApdu());
+        if (other.m_Apdu.has_value()) {
+            m_Apdu = std::make_unique<Apdu>(other.GetApdu());
+        }
     }
 
     Type GetType() const {

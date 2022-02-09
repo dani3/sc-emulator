@@ -26,7 +26,6 @@ add_executable(${CMAKE_PROJECT_NAME}
   src/Protocol/Protocol.cpp
   src/Protocol/Atr.cpp
   src/Protocol/TcpIpServer.cpp
-  src/Memory/MMU.cpp
   src/Cryptography/CRC16.cpp
 )
 

@@ -1,5 +1,4 @@
 #include "Core/Product.h"
-#include "Memory/MMU.h"
 
 Product::Product() {
     m_Platform = std::make_unique<Platform>();
@@ -12,10 +11,6 @@ Product::~Product() {
 }
 
 void Product::Reset() {
-    // TODO move this to Device.
-    // Set the RAM to 0x00
-    MMU::Fill(&m_Platform->GetRamStartAsMut()[0], 0x00, m_Platform->RAM_SIZE);
-
     m_Protocol->SendAtr();
 }
 
@@ -27,36 +22,38 @@ void Product::Run() {
     // Initialize the protocol.
     m_Protocol->Init();
 
-    while (true) {
-        // Set the RAM to 0x00
-        MMU::Fill(&m_Platform->GetRamStartAsMut()[0], 0x00, m_Platform->RAM_SIZE);
+    bool exit = false;
+    while (!exit) {
+        Result<Message> res = m_Protocol->Receive();
+        if (res.IsOk()) {
+            switch (res.Value().GetType()) {
+            case Message::Type::NEW_CONNECTION:
+                SC_PANIC("not implemented yet");
+                break;
 
-        while (true) {
-            Result<Message> res = m_Protocol->Receive();
-            if (res.IsOk()) {
-                switch (res.Value().GetType()) {
-                case Message::Type::NEW_CONNECTION:
-                    SC_PANIC("not implemented yet");
-                    break;
+            case Message::Type::COLD_RESET:
+                SC_INFO("cold reset received...");
+                Reset();
+                break;
 
-                case Message::Type::COLD_RESET:
-                    Reset();
-                    break;
+            case Message::Type::EXIT:
+                SC_INFO("exit request received...");
+                exit = true;
+                break;
 
-                case Message::Type::EXIT:
-                    break;
+            case Message::Type::APDU:
+                SC_INFO("new APDU received...");
+                Apdu apdu = res.Value().GetApdu();
 
-                case Message::Type::APDU:
-                    Apdu apdu = res.Value().GetApdu();
-
-                    apdu.SetSw(0x9000);
-                    m_Protocol->Send(apdu);
-                    break;
-                }
-
-            } else {
-                /// \todo Return error code.
+                apdu.SetSw(0x9000);
+                m_Protocol->Send(apdu);
+                break;
             }
+
+        } else {
+            exit = true;
         }
     }
+
+    SC_INFO("shutting down sc-emulator...");
 }
